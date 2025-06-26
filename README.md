@@ -3,6 +3,7 @@ Clone repository extract files and double click on the 'Dracula SQLmap live.bat'
 
 
 ⚙️ WHAT HAPPENS NEXT (Live Breakdown)
+
 🔎 PHASE 1: Full SQL Injection
 SQLMap runs with high intensity: --level=5 --risk=3
 
@@ -29,9 +30,7 @@ Attempts to grab:
 
 If vulnerable, it saves the file into:
 
-lua
-Copy
-Edit
+
 sqlmap\output
 
 
@@ -42,12 +41,11 @@ Launch an interactive shell
 
 Let you run Linux commands like:
 
-bash
-Copy
-Edit
+
 whoami
 uname -a
 ls -la /var/www
+
 🔍 PHASE 4: Sensitive Data Extraction
 Scans your dumped data for:
 
