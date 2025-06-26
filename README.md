@@ -1,5 +1,94 @@
 
 Clone repository extract files and double click on the 'Dracula SQLmap live.bat' Boom that's it don't thank me Pay me   <<<-------------------AP
+
+
+⚙️ WHAT HAPPENS NEXT (Live Breakdown)
+🔎 PHASE 1: Full SQL Injection
+SQLMap runs with high intensity: --level=5 --risk=3
+
+Dumps:
+
+All databases
+
+All tables
+
+All columns
+
+All data (--dump-all)
+
+Gets user data: --users --passwords --roles --privileges
+
+Outputs info>>qlmap\output\
+
+📂 PHASE 2: File Read (If Allowed)
+Attempts to grab:
+
+/etc/passwd – standard Linux file
+
+/var/www/html/config.php – might contain database creds
+
+If vulnerable, it saves the file into:
+
+lua
+Copy
+Edit
+sqlmap\output
+
+
+💣 PHASE 3: OS Shell
+If SQLMap detects it’s possible, it will:
+
+Launch an interactive shell
+
+Let you run Linux commands like:
+
+bash
+Copy
+Edit
+whoami
+uname -a
+ls -la /var/www
+🔍 PHASE 4: Sensitive Data Extraction
+Scans your dumped data for:
+
+Tokens
+
+API keys
+
+Passwords
+
+EMV tags
+
+Anything juicy
+
+It writes this into:
+
+Copy
+Edit
+extracted_findings.txt
+🧠 PHASE 5: Crack Hashes (Manual)
+If hashes were found in Phase 1:
+
+They're saved in the SQLMap output
+
+You can copy them into:
+
+Copy
+Edit
+hashdump.txt
+Then run something like:
+
+nginx
+Copy
+Edit
+hashcat -m 0 hashdump.txt rockyou.txt
+🗃 WHAT TO LOOK FOR IN OUTPUT
+Folder / File	What it Contains
+sqlmap\output\yourdomain\dump\	Dumped database tables (CSV/SQL format)
+sqlmap\output\yourdomain\files\	Any successfully read files
+extracted_findings.txt	All juicy terms (tokens, passwords, secrets)
+cmd window	If OS shell opened, real-time command responses
+
 ========================================================================================================================================================================================
 # sqlmap ![](https://i.imgur.com/fe85aVR.png)
 
@@ -52,31 +141,4 @@ Links
 * Demos: [https://www.youtube.com/user/inquisb/videos](https://www.youtube.com/user/inquisb/videos)
 * Screenshots: https://github.com/sqlmapproject/sqlmap/wiki/Screenshots
 
-Translations
-----
 
-* [Arabic](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-ar-AR.md)
-* [Bulgarian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-bg-BG.md)
-* [Chinese](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-zh-CN.md)
-* [Croatian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-hr-HR.md)
-* [Dutch](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-nl-NL.md)
-* [French](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-fr-FR.md)
-* [Georgian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-ka-GE.md)
-* [German](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-de-DE.md)
-* [Greek](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-gr-GR.md)
-* [Hindi](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-in-HI.md)
-* [Indonesian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-id-ID.md)
-* [Italian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-it-IT.md)
-* [Japanese](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-ja-JP.md)
-* [Korean](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-ko-KR.md)
-* [Kurdish (Central)](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-ckb-KU.md)
-* [Persian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-fa-IR.md)
-* [Polish](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-pl-PL.md)
-* [Portuguese](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-pt-BR.md)
-* [Russian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-ru-RU.md)
-* [Serbian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-rs-RS.md)
-* [Slovak](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-sk-SK.md)
-* [Spanish](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-es-MX.md)
-* [Turkish](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-tr-TR.md)
-* [Ukrainian](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-uk-UA.md)
-* [Vietnamese](https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-vi-VN.md)
