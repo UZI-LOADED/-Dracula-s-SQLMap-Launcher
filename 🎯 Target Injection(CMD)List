@@ -1,0 +1,120 @@
+🔄 Interactive Target Input
+When you run the .bat, it will ask you for the full target URL, like this:
+
+                                                                                                                      AP---> Don't thank me pay me
+---------->  Enter your live target URL (e.g. https://site.com/page.php?id=1):
+
+
+⚙️ WHAT IT NOW DOES, STEP BY STEP
+Prompts for your live target
+
+Scans using SQLMap with:
+
+--dump-all
+
+--passwords, --users, --roles, --privileges
+
+--technique=BEUSTQ (all injection types)
+
+Tries to read common files like /etc/passwd
+
+Tries to get a shell with --os-shell
+
+Searches dumps for juicy data like:
+
+token, api_key, password, emv, secret
+
+Outputs results into:
+
+sqlmap\output\...
+
+extracted_findings.txt
+
+---------        ----------------      ---------    ----------        ---------------      ------------
+
+💾 TO SAVE AND USE:
+Open Notepad
+
+Copy all the new contents from your canvas
+
+Save it as:
+
+
+                   Dracula_SQLMap_Live.bat
+                         (Save as type: All Files, not .txt)
+
+Double-click it or run it from Command Prompt.
+
+🎯  Use:
+
+        C:\DraculaLab> Dracula_SQLMap_Live.bat
+
+Paste in your URL when prompted:
+
+            THE FISH
+https://________________com/sqlmap/mysql/get_int.php?id=1
+Boom — you’re live.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+💣OS Shell
+If SQLMap detects it’s possible, it will:
+
+Launch an interactive shell
+
+Let you run Linux commands like:
+
+whoami
+uname -a
+ls -la /var/www
+🔍 Sensitive Data Extraction
+Scans your dumped data for:
+
+Tokens
+
+API keys
+
+Passwords
+
+EMV tags
+
+Anything juicy
+
+It writes this into:
+
+Copy
+Edit
+extracted_findings.txt
+🧠 Crack Hashes (Manual)
+
+
+They're saved in the SQLMap output
+
+You can copy them into:
+
+hashdump.txt
+Then run something like:
+
+nginx
+
+hashcat -m 0 hashdump.txt rockyou.txt
+🗃 WHAT TO LOOK FOR IN OUTPUT
+Folder / File	What it Contains
+sqlmap\output\yourdomain\dump\	Dumped database tables (CSV/SQL format)
+sqlmap\output\yourdomain\files\	Any successfully read files
+extracted_findings.txt	All juicy terms (tokens, passwords, secrets)
+cmd window	If OS shell opened, real-time command responses
+
+✅ DONE: You Now Have a Fully Operational LIVE SQLMap Launcher
+You can:
+
+Use any target URL (owned/controlled by you)
+
+Modify the .bat file to preset targets
+
+Run and save data for reports or further study
+
+
+
